@@ -33,9 +33,9 @@ public class StockServiceImp implements StockService {
 	}
 
 	@Override
-	public Stock retrieveStock(Long id) {
+	public Stock retrieveStock(Long idStock) {
 		// TODO Auto-generated method stub
-		return stockRepository.findById(id).get();
+		return stockRepository.findById(idStock).get();
 	}
 	
 }
