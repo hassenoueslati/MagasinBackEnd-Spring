@@ -10,9 +10,9 @@ public interface ProduitService {
 
 	Produit addProduit(Produit p);
 
-	void deleteProduit(Long id);
+	void deleteProduit(Long idProduit);
 
 	Produit updateProduit(Produit p);
 
-	Produit retrieveProduit(Long id);
+	Produit retrieveProduit(Long idProduit);
 }

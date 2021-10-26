@@ -11,10 +11,10 @@ public interface ClientService {
 
 	Client addClient(Client c);
 
-	void deleteClient(Long id);
+	void deleteClient(Long idClient);
 
 	Client updateClient(Client c);
 
-	Client retrieveClient(Long id);
+	Client retrieveClient(Long idClient);
 
 }

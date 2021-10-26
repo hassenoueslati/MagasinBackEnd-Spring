@@ -23,8 +23,8 @@ public class ProduitServiceImpl implements ProduitService {
 	}
 
 	@Override
-	public void deleteProduit(Long id) {
-		produitRepository.deleteById(id);
+	public void deleteProduit(Long idProduit) {
+		produitRepository.deleteById(idProduit);
 		
 	}
 
@@ -34,8 +34,8 @@ public class ProduitServiceImpl implements ProduitService {
 	}
 
 	@Override
-	public Produit retrieveProduit(Long id) {
-		return produitRepository.findById(id).get();
+	public Produit retrieveProduit(Long idProduit) {
+		return produitRepository.findById(idProduit).get();
 	}
 
 }

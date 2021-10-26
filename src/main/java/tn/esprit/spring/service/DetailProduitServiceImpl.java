@@ -24,8 +24,8 @@ public class DetailProduitServiceImpl implements DetailProduitService {
 	}
 
 	@Override
-	public void deleteDetailProduit(Long id) {
-		detailProduitRepository.deleteById(id);
+	public void deleteDetailProduit(Long idDetailProduit) {
+		detailProduitRepository.deleteById(idDetailProduit);
 		
 	}
 
@@ -35,8 +35,8 @@ public class DetailProduitServiceImpl implements DetailProduitService {
 	}
 
 	@Override
-	public DetailProduit retrieveDetailProduit(Long id) {
-		return detailProduitRepository.findById(id).get();
+	public DetailProduit retrieveDetailProduit(Long idDetailProduit) {
+		return detailProduitRepository.findById(idDetailProduit).get();
 	}
 
 	

@@ -10,9 +10,9 @@ public interface DetailProduitService {
 
 	DetailProduit addDetailProduit(DetailProduit dp);
 
-	void deleteDetailProduit(Long id);
+	void deleteDetailProduit(Long idDetailProduit);
 
 	DetailProduit updateDetailProduit(DetailProduit dp);
 
-	DetailProduit retrieveDetailProduit(Long id);
+	DetailProduit retrieveDetailProduit(Long idDetailProduit);
 }
