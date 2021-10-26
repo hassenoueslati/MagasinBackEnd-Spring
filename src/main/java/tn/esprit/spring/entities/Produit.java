@@ -34,6 +34,9 @@ public class Produit implements Serializable {
 		Stock stock;
 		@ManyToOne
 		DetailFacture detailFacture;
+		@ManyToMany(cascade = CascadeType.ALL)
+		private Set<Transporteur> ProduitT;
+		
 		public Long getIdProduit() {
 			return idProduit;
 		}
