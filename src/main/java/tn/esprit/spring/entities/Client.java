@@ -36,7 +36,8 @@ private Profession profession;
 public CategorieClient categorieClient;
 @OneToMany(cascade = CascadeType.ALL, mappedBy="client")
 private Set<Facture> facture;
-
+@OneToMany(cascade = CascadeType.ALL, mappedBy="client")
+private Set<Reclamation> reclamation;
 public Long getIdClient() {
 	return idClient;
 }
