@@ -40,11 +40,6 @@ public class ClientServiceImpl implements ClientService{
 		return clientRepository.findById(id).get();
 	}
 	
-	public List<Client> SQLretrieveAllClientsByBirthDate(Date D1 , Date D2) {
-        return  (List<Client>)clientRepository.SQLretrieveClientsByBirthDate(D1, D2);
-    }
-    public List<Client> JPQLretrieveAllClientsByBirthDate(Date D1 , Date D2) {
-        return  (List<Client>)clientRepository.JPQLretrieveClientsByBirthDate(D1, D2);
-    }
+	
 
 }
