@@ -30,15 +30,13 @@ public class Produit implements Serializable {
 		private Set<Fournisseur> Produit;
 		@ManyToMany(cascade = CascadeType.ALL)
 		private Set<Transporteur> ProduitT;
-		
-		
-		
 		@ManyToOne
 		Rayon rayon;
 		@ManyToOne
 		Stock stock;
 		@ManyToOne
 		DetailFacture detailFacture;
+		
 		
 		public Long getIdProduit() {
 			return idProduit;
