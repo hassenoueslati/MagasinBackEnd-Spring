@@ -38,6 +38,7 @@ public CategorieClient categorieClient;
 private Set<Facture> facture;
 @OneToMany(cascade = CascadeType.ALL, mappedBy="client")
 private Set<Reclamation> reclamation;
+
 public Long getIdClient() {
 	return idClient;
 }
@@ -101,7 +102,19 @@ public Client(Long idClient, String nom, String prenom, String email, String pas
 public Client() {
 	super();
 }
+public Client(String nom, String prenom,Date dateNaissance, String email, String password,
+		CategorieClient categorieClient, Profession profession) {
+	super();
+	this.nom = nom;
+	this.prenom = prenom;
+	this.email = email;
+	this.password = password;
+	this.dateNaissance = dateNaissance;
+	this.profession = profession;
+	this.categorieClient = categorieClient;
 
+}
+ 
 
 
 }

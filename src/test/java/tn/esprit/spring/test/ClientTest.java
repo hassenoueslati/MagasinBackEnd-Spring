@@ -1,4 +1,4 @@
-package tn.esprit.spring;
+package tn.esprit.spring.test;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -6,7 +6,7 @@ import java.util.Date;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,19 +19,17 @@ import tn.esprit.spring.service.ClientServiceImpl;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-class MagasinStockApplicationTests {
-	
-	@Autowired
-    ClientServiceImpl clientService;
+public class ClientTest {
+	 @Autowired
+	    ClientServiceImpl clientService;
 
-    private static final Logger l = LogManager.getLogger(ClientServiceImpl.class);
-
+	    private static final Logger l = LogManager.getLogger(ClientServiceImpl.class);
 
 
-	@Test
-	void contextLoads() throws java.text.ParseException {
-		
-		 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	    @Test
+	  public void testAddUSer() throws java.text.ParseException {
+
+	      SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 	      Date date = dateFormat.parse("2015-03-23");
 	      Client c1 = new Client("shayma","Rebhi",date,"shayma.rebhi@gmail.com", "test", CategorieClient.Premuim, Profession.Etudiant);
 	      Client c2 = new Client("test2","rebh",date,"shayma.rebhi@gmail.com", "test", CategorieClient.Premuim, Profession.Etudiant);
@@ -41,9 +39,10 @@ class MagasinStockApplicationTests {
 	      clientService.addClient(c1);
 	      clientService.addClient(c2);
 	      clientService.addClient(c3);
-	      clientService.retrieveClient(4L);
+	      clientService.retrieveClient(2L);
 	      clientService.retrieveAllClients();
-	      clientService.deleteClient(4L);
-	}
+	      clientService.deleteClient(2L);
+
+	  }
 
 }

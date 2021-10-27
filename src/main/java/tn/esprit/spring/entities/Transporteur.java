@@ -100,6 +100,5 @@ public class Transporteur implements Serializable {
 		public Transporteur() {
 			super();
 		}
-		
 
 }
