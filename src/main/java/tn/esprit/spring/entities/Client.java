@@ -102,7 +102,19 @@ public Client(Long idClient, String nom, String prenom, String email, String pas
 public Client() {
 	super();
 }
+public Client(String nom, String prenom,Date dateNaissance, String email, String password,
+		CategorieClient categorieClient, Profession profession) {
+	super();
+	this.nom = nom;
+	this.prenom = prenom;
+	this.email = email;
+	this.password = password;
+	this.dateNaissance = dateNaissance;
+	this.profession = profession;
+	this.categorieClient = categorieClient;
 
+}
+ 
 
 
 }
