@@ -41,9 +41,9 @@ class MagasinStockApplicationTests {
 	      clientService.addClient(c1);
 	      clientService.addClient(c2);
 	      clientService.addClient(c3);
-	      clientService.retrieveClient(2L);
+	      clientService.retrieveClient(4L);
 	      clientService.retrieveAllClients();
-	      clientService.deleteClient(2L);
+	      clientService.deleteClient(4L);
 	}
 
 }
