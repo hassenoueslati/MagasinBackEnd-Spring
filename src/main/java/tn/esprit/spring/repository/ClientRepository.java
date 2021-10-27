@@ -19,7 +19,8 @@ public interface ClientRepository extends CrudRepository<Client, Long> {
     @Query("update Client c set c.nom = :nom , c.prenom = :prenom , c.dateNaissance = :dateN ,"
             + " c.email = :email , c.CategorieClient = :CategorieClient , c.Profession = :Profession where c.idClient = :id")
     int updateClient(@Param("nom")String nom, @Param("prenom")String prenom, @Param("dateN") Date dateN,
-                         @Param("email")String email,@Param("CategorieClient") CategorieClient categorieClient, @Param("Profession") Profession Profession,
+                         @Param("email")String email,@Param("CategorieClient") CategorieClient categorieClient,
+                         @Param("Profession") Profession Profession,
                          @Param("idClient")Long idClient);
 
     //JPQL//
