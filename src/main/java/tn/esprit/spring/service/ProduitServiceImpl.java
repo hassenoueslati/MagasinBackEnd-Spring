@@ -3,17 +3,20 @@ package tn.esprit.spring.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import lombok.extern.slf4j.Slf4j;
 import tn.esprit.spring.entities.Produit;
 import tn.esprit.spring.repository.ProduitRepository;
 
+@Slf4j
+@Service
 public class ProduitServiceImpl implements ProduitService {
 
 	@Autowired
 	ProduitRepository produitRepository ;
 	@Override
 	public List<Produit> retrieveAllProduits() {
-		// TODO Auto-generated method stub
 		return (List<Produit>) produitRepository.findAll() ;
 	}
 
