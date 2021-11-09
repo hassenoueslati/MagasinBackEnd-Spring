@@ -11,7 +11,10 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.Data;
+
 @Entity
+@Data
 @Table( name = "Reclamation")
 
 public class Reclamation implements Serializable {

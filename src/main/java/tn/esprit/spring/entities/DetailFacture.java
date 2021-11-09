@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import lombok.Data;
 @Entity
 @Table( name = "DetailFacture")
 public class DetailFacture implements Serializable {
@@ -59,7 +61,7 @@ public class DetailFacture implements Serializable {
 		this.montantRemise = montantRemise;
 	}
 	public DetailFacture(Long idDetailFacture, Integer qte, Float prixTotal, Integer pourcentageRemise,
-			Float montantRemise) {
+						 Float montantRemise) {
 		super();
 		this.idDetailFacture = idDetailFacture;
 		this.qte = qte;
@@ -70,6 +72,7 @@ public class DetailFacture implements Serializable {
 	public DetailFacture() {
 		super();
 	}
+	
 	
 	
 

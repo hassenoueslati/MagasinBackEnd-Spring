@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import lombok.extern.slf4j.Slf4j;
 import tn.esprit.spring.entities.Transporteur;
 import tn.esprit.spring.repository.TransporteurRepository;
 
+@Slf4j
 public class TransporteurServiceImp implements TransporteurService {
 
 	@Autowired

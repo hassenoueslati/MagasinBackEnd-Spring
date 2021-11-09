@@ -6,9 +6,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import lombok.extern.slf4j.Slf4j;
 import tn.esprit.spring.entities.Client;
 import tn.esprit.spring.repository.ClientRepository;
 
+@Slf4j
 @Service
 public class ClientServiceImpl implements ClientService{
 
@@ -17,7 +19,9 @@ public class ClientServiceImpl implements ClientService{
 	
 	@Override
 	public List<Client> retrieveAllClients() {
-		return (List<Client>) clientRepository.findAll();
+           List<Client>clients= (List<Client>)clientRepository.findAll();
+
+           return clients ;
 	}
 
 	@Override
@@ -26,8 +30,8 @@ public class ClientServiceImpl implements ClientService{
 	}
 
 	@Override
-	public void deleteClient(Long id) {
-      clientRepository.deleteById(id);		
+	public void deleteClient(Long idClient) {
+      clientRepository.deleteById(idClient);		
 	}
 
 	@Override
@@ -36,8 +40,8 @@ public class ClientServiceImpl implements ClientService{
 	}
 
 	@Override
-	public Client retrieveClient(Long id) {
-		return clientRepository.findById(id).get();
+	public Client retrieveClient(Long idClient) {
+		return clientRepository.findById(idClient).get();
 	}
 	
 	

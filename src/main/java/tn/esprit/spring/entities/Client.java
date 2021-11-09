@@ -17,7 +17,15 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
 @Entity
+@Data
 @Table( name = "Client")
 public class Client implements Serializable {
 @Id
@@ -38,59 +46,9 @@ public CategorieClient categorieClient;
 private Set<Facture> facture;
 @OneToMany(cascade = CascadeType.ALL, mappedBy="client")
 private Set<Reclamation> reclamation;
-
-public Long getIdClient() {
-	return idClient;
-}
-public void setIdClient(Long idClient) {
-	this.idClient = idClient;
-}
-public String getNom() {
-	return nom;
-}
-public void setNom(String nom) {
-	this.nom = nom;
-}
-public String getPrenom() {
-	return prenom;
-}
-public void setPrenom(String prenom) {
-	this.prenom = prenom;
-}
-public String getEmail() {
-	return email;
-}
-public void setEmail(String email) {
-	this.email = email;
-}
-public String getPassword() {
-	return password;
-}
-public void setPassword(String password) {
-	this.password = password;
-}
-public Date getDateNaissance() {
-	return dateNaissance;
-}
-public void setDateNaissance(Date dateNaissance) {
-	this.dateNaissance = dateNaissance;
-}
-public Profession getProfession() {
-	return profession;
-}
-public void setProfession(Profession profession) {
-	this.profession = profession;
-}
-public CategorieClient getCategorieClient() {
-	return categorieClient;
-}
-public void setCategorieClient(CategorieClient categorieClient) {
-	this.categorieClient = categorieClient;
-}
-public Client(Long idClient, String nom, String prenom, String email, String password, Date dateNaissance,
-		Profession profession, CategorieClient categorieClient) {
+public Client(String nom, String prenom,Date dateNaissance, String email, String password,
+		CategorieClient categorieClient,Profession profession) {
 	super();
-	this.idClient = idClient;
 	this.nom = nom;
 	this.prenom = prenom;
 	this.email = email;
@@ -102,19 +60,8 @@ public Client(Long idClient, String nom, String prenom, String email, String pas
 public Client() {
 	super();
 }
-public Client(String nom, String prenom,Date dateNaissance, String email, String password,
-		CategorieClient categorieClient, Profession profession) {
-	super();
-	this.nom = nom;
-	this.prenom = prenom;
-	this.email = email;
-	this.password = password;
-	this.dateNaissance = dateNaissance;
-	this.profession = profession;
-	this.categorieClient = categorieClient;
 
-}
- 
+
 
 
 }

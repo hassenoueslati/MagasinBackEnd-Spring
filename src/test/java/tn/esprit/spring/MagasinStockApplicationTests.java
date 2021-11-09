@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import lombok.extern.slf4j.Slf4j;
 import tn.esprit.spring.entities.CategorieClient;
 import tn.esprit.spring.entities.Client;
 import tn.esprit.spring.entities.Profession;
@@ -41,9 +42,9 @@ class MagasinStockApplicationTests {
 	      clientService.addClient(c1);
 	      clientService.addClient(c2);
 	      clientService.addClient(c3);
-	      clientService.retrieveClient(4L);
+	      clientService.retrieveClient(6L);
 	      clientService.retrieveAllClients();
-	      clientService.deleteClient(4L);
+	      clientService.deleteClient(6L);
 	}
 
 }
