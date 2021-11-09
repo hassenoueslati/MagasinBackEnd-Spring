@@ -39,5 +39,10 @@ public class StockServiceImp implements StockService {
 		// TODO Auto-generated method stub
 		return stockRepository.findById(idStock).get();
 	}
+
+	public void deleteStock(Long idStock) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

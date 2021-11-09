@@ -18,12 +18,32 @@ import lombok.Data;
 @Table( name = "Reclamation")
 
 public class Reclamation implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column(name="idReclamation")
 	private Long idReclamation;
 	private String description;
 	private Date date;
+	
 	 @ManyToOne
 	    Client client;
+
+	 public Reclamation() {
+		 
+	 }
+	public Reclamation(Long idReclamation, String description, Date date, Client client) {
+		super();
+		this.idReclamation = idReclamation;
+		this.description = description;
+		this.date = date;
+		this.client = client;
+	}
+	
+	 
+	 
+	 
 }

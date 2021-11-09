@@ -26,18 +26,18 @@ public class DetailProduit implements Serializable  {
 		@Temporal(TemporalType.DATE)
 		private Date dateDerniereModification;
 		@Enumerated(EnumType.STRING)
-		public CategorieClient categorieClient;
+		public CategorieProduit categorieProduit;
 		@OneToOne(mappedBy="detailProduit")
 		private Produit Produit;
 
 		
 		public DetailProduit(Long idDetailProduit, Date dateCreation, Date dateDerniereModification,
-				CategorieClient categorieClient) {
+				CategorieProduit categorieProduit) {
 			super();
 			this.idDetailProduit = idDetailProduit;
 			this.dateCreation = dateCreation;
 			this.dateDerniereModification = dateDerniereModification;
-			this.categorieClient = categorieClient;
+			this.categorieProduit = categorieProduit;
 		}
 
 
@@ -71,13 +71,26 @@ public class DetailProduit implements Serializable  {
 		}
 
 
-		public CategorieClient getCategorieClient() {
-			return categorieClient;
+	
+
+
+		public CategorieProduit getCategorieProduit() {
+			return categorieProduit;
 		}
 
 
-		public void setCategorieClient(CategorieClient categorieClient) {
-			this.categorieClient = categorieClient;
+		public void setCategorieProduit(CategorieProduit categorieProduit) {
+			this.categorieProduit = categorieProduit;
+		}
+
+
+		public Produit getProduit() {
+			return Produit;
+		}
+
+
+		public void setProduit(Produit produit) {
+			Produit = produit;
 		}
 
 
