@@ -14,9 +14,19 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 @Entity
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 @Table( name = "Produit")
 public class Produit implements Serializable {
 		@Id
@@ -39,5 +49,12 @@ public class Produit implements Serializable {
 		Stock stock;
 		@ManyToOne
 		DetailFacture detailFacture;
+		public Produit(String code, String libelle, Float prixUnitaire) {
+			super();
+			this.code = code;
+			this.libelle = libelle;
+			this.prixUnitaire = prixUnitaire;
+		}
+		
 
 }
