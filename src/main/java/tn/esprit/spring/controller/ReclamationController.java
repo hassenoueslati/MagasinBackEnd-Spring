@@ -13,10 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import tn.esprit.spring.entities.Reclamation;
 import tn.esprit.spring.service.ReclamationServiceImp;
 
 @RestController
+@Api(tags="Reclamation")
 @RequestMapping("/reclamation")
 public class ReclamationController {
 	@Autowired
@@ -24,6 +27,7 @@ public class ReclamationController {
 	
 	// http://localhost:8089/SpringMVC/reclamation/retrieve-all-Reclamations
 	@GetMapping("/retrieve-all-Reclamations")
+	@ApiOperation("routrouver tous les reclamations")
 	@ResponseBody
 	public List<Reclamation> getAllReclamation(){
 		List<Reclamation> listReclamations = reclamationService.retrieveAllReclamations();
@@ -32,6 +36,7 @@ public class ReclamationController {
 	
 	// http://localhost:8089/SpringMVC/reclamation/retrieve-reclamation/8
 	@GetMapping("/retrieve-reclamation/{reclamation-id}")
+	@ApiOperation("routrouver une reclamation")
 	@ResponseBody
 	public Reclamation retrieveClient(@PathVariable("reclamation-id") Long idReclamation) {
 	return reclamationService.retrieveReclamation(idReclamation);
@@ -39,6 +44,7 @@ public class ReclamationController {
 	
 	// http://localhost:8089/SpringMVC/reclamation/add-reclamation
 	@PostMapping("/add-reclamation")
+	@ApiOperation("ajouter les reclamations")
 	@ResponseBody
 	public Reclamation addReclamation(@RequestBody Reclamation r)
 	{
@@ -48,6 +54,7 @@ public class ReclamationController {
 	
 	// http://localhost:8089/SpringMVC/reclamation/remove-reclamation/{reclamation-id}
 	@DeleteMapping("/remove-reclamation/{reclamation-id}")
+	@ApiOperation("effacer les reclamations")
 	@ResponseBody
 	public void removeReclamation(@PathVariable("reclamation-id") Long idReclamation) {
 		reclamationService.deleteReclamation(idReclamation);
@@ -55,6 +62,7 @@ public class ReclamationController {
 
 	// http://localhost:8089/SpringMVC/reclamation/modify-reclamation
 	@PutMapping("/modify-reclamation")
+	@ApiOperation("modifier tous les reclamations")
 	@ResponseBody
 	public Reclamation modifyReclamation(@RequestBody Reclamation reclamation) {
 	return reclamationService.updateReclamation(reclamation);

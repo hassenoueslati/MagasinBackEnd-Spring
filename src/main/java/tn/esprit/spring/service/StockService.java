@@ -10,5 +10,5 @@ public interface StockService {
     Stock addStock(Stock s);
     Stock updateStock(Stock u);
     Stock retrieveStock(Long idStock);
-    
+    void assignProduitToStock(Long idProduit, Long idStock);
 }

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.ApiOperation;
 import tn.esprit.spring.entities.Reclamation;
 import tn.esprit.spring.entities.Stock;
 import tn.esprit.spring.service.ReclamationServiceImp;
@@ -27,6 +28,7 @@ public class StockController {
 	
 	// http://localhost:8089/SpringMVC/stock/retrieve-all-Stock
 	@GetMapping("/retrieve-all-Stocks")
+	@ApiOperation("routrouver tous les stocks")
 	@ResponseBody
 	public List<Stock> getAllStock(){
 		List<Stock> listStocks = stockService.retrieveAllStocks();
@@ -35,6 +37,7 @@ public class StockController {
 	
 	// http://localhost:8089/SpringMVC/stock/retrieve-stock/8
 	@GetMapping("/retrieve-stock/{stock-id}")
+	@ApiOperation("routrouver un stock")
 	@ResponseBody
 	public Stock retrieveClient(@PathVariable("stock-id") Long idStock) {
 	return stockService.retrieveStock(idStock);
@@ -42,6 +45,7 @@ public class StockController {
 	
 	// http://localhost:8089/SpringMVC/stock/add-stock
 	@PostMapping("/add-stock")
+	@ApiOperation("ajouter les stocks")
 	@ResponseBody
 	public Stock addStock(@RequestBody Stock s)
 	{
@@ -51,6 +55,7 @@ public class StockController {
 	
 	// http://localhost:8089/SpringMVC/stock/remove-stock/{stock-id}
 	@DeleteMapping("/remove-stock/{stock-id}")
+	@ApiOperation("supprimer les stocks")
 	@ResponseBody
 	public void removeStock(@PathVariable("stock-id") Long idStock) {
 		stockService.deleteStock(idStock);
@@ -58,8 +63,15 @@ public class StockController {
 
 	// http://localhost:8089/SpringMVC/stock/modify-stock
 	@PutMapping("/modify-stock")
+	@ApiOperation("modifier les stocks")
 	@ResponseBody
 	public Stock modifyStock(@RequestBody Stock stock) {
 	return stockService.updateStock(stock);
+	}
+	
+	@GetMapping("/assignProduitToStock/{idProduit}/{idStock}")
+	public String assinProduitToStock(@PathVariable(value = "idProduit") long idProduit,@PathVariable(value = "idStock") long idStock) {
+		stockService.assignProduitToStock(idProduit, idStock);
+		return "product successfuly assigned to Stock";
 	}
 }
