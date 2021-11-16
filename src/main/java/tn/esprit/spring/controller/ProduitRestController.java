@@ -13,10 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import tn.esprit.spring.entities.Produit;
 import tn.esprit.spring.service.ProduitServiceImpl;
 
 @RestController
+@Api(tags = "Produit management")
 @RequestMapping("/produit")
 public class ProduitRestController {
 
@@ -25,6 +28,7 @@ public class ProduitRestController {
 	
 	// http://localhost:8089/SpringMVC/produit/retrieve-all-produits
 	@GetMapping("/retrieve-all-produits")
+	@ApiOperation(value = "Récupérer la liste des Produits")
 	@ResponseBody
 	public List<Produit> getProduits() {
 		List<Produit> listProduits = produitService.retrieveAllProduits();
@@ -33,6 +37,7 @@ public class ProduitRestController {
 	
 	// http://localhost:8089/SpringMVC/produit/retrieve-produit/8
 	@GetMapping("/retrieve-produit/{produit-id}")
+	@ApiOperation(value = "Récupérer un produit")
 	@ResponseBody
 	public Produit retrieveProduit(@PathVariable("produit-id") Long idProduit) {
 	return produitService.retrieveProduit(idProduit);
@@ -40,6 +45,7 @@ public class ProduitRestController {
 	
 	// http://localhost:8089/SpringMVC/produit/add-produit
 	@PostMapping("/add-produit")
+	@ApiOperation(value = "Ajouter un nouveau produit")
 	@ResponseBody
 	public Produit addProduit(@RequestBody Produit p)
 	{
@@ -49,6 +55,7 @@ public class ProduitRestController {
 	
 	// http://localhost:8089/SpringMVC/produit/remove-produit/{produit-id}
 	@DeleteMapping("/remove-produit/{produit-id}")
+	@ApiOperation(value = "Supprimer un produit")
 	@ResponseBody
 	public void removeProduit(@PathVariable("produit-id") Long idProduit) {
 		produitService.deleteProduit(idProduit);
@@ -56,6 +63,7 @@ public class ProduitRestController {
 	
 	// http://localhost:8089/SpringMVC/produit/modify-produit
 	@PutMapping("/modify-produit")
+	@ApiOperation(value = "Modifier les coordonnées d'un produit")
 	@ResponseBody
 	public Produit modifyProduit(@RequestBody Produit produit) {
 	return produitService.updateProduit(produit);
