@@ -15,4 +15,6 @@ public interface ProduitService {
 	Produit updateProduit(Produit p);
 
 	Produit retrieveProduit(Long idProduit);
+	
+	void assignFournisseurToProduit(Long fournisseurId, Long produitId);
 }

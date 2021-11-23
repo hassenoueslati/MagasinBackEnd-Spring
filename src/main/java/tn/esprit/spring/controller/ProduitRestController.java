@@ -69,6 +69,14 @@ public class ProduitRestController {
 	return produitService.updateProduit(produit);
 	}
 	
+	@ApiOperation(value = "affecter un fournisseur au produit.")
+	@PutMapping("/assign-fournisseur/{produit}/{fournisseur}")
+    @ResponseBody
+    public void assignFournisseur(@PathVariable("produit") Long productId,@PathVariable("fournisseur") Long fournisseurId)
+    {
+        produitService.assignFournisseurToProduit(fournisseurId,productId);
+    }
+	
 	
 	
 }
