@@ -5,9 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import lombok.extern.slf4j.Slf4j;
 import tn.esprit.spring.entities.DetailProduit;
 import tn.esprit.spring.repository.DetailProduitRepository;
-
+@Slf4j
 @Service
 public class DetailProduitServiceImpl implements DetailProduitService {
 
