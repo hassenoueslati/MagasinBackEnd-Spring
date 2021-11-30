@@ -29,7 +29,7 @@ public class Transporteur implements Serializable {
 		private String matricule;
 		private  Integer  quantiteMax;
 		
-		@ManyToMany(mappedBy="ProduitT", cascade = CascadeType.ALL)
+		@ManyToMany(mappedBy="Transporteur", cascade = CascadeType.ALL)
 		private Set<Produit> produits;
 
 		
