@@ -3,17 +3,26 @@ package tn.esprit.spring.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import lombok.extern.slf4j.Slf4j;
+import tn.esprit.spring.entities.Fournisseur;
 import tn.esprit.spring.entities.Produit;
+import tn.esprit.spring.repository.FournisseurRepository;
 import tn.esprit.spring.repository.ProduitRepository;
 
+@Slf4j
+@Service
 public class ProduitServiceImpl implements ProduitService {
 
 	@Autowired
 	ProduitRepository produitRepository ;
+	@Autowired
+	FournisseurRepository fournisseurRepository ;
+	
 	@Override
 	public List<Produit> retrieveAllProduits() {
-		// TODO Auto-generated method stub
 		return (List<Produit>) produitRepository.findAll() ;
 	}
 
@@ -37,5 +46,12 @@ public class ProduitServiceImpl implements ProduitService {
 	public Produit retrieveProduit(Long idProduit) {
 		return produitRepository.findById(idProduit).get();
 	}
+	
+	@Transactional
+    public void assignFournisseurToProduit(Long fournisseurId, Long produitId) {
+        Produit produit=produitRepository.findById(produitId).orElse(null);
+        Fournisseur fournisseur=fournisseurRepository.findById(fournisseurId).orElse(null);
+        produit.getFournisseur().add(fournisseur);
+    }
 
 }
