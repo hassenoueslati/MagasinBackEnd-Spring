@@ -42,43 +42,7 @@ public class Produit implements Serializable {
 		@ManyToMany(cascade = CascadeType.ALL)
 		private Set<Fournisseur> Fournisseur;
 		@ManyToMany(cascade = CascadeType.ALL)
-		private Set<Transporteur> ProduitT;
-		public DetailProduit getDetailProduit() {
-			return detailProduit;
-		}
-		public void setDetailProduit(DetailProduit detailProduit) {
-			this.detailProduit = detailProduit;
-		}
-		public Set<Fournisseur> getProduit() {
-			return Produit;
-		}
-		public void setProduit(Set<Fournisseur> produit) {
-			Produit = produit;
-		}
-		public Set<Transporteur> getProduitT() {
-			return ProduitT;
-		}
-		public void setProduitT(Set<Transporteur> produitT) {
-			ProduitT = produitT;
-		}
-		public Rayon getRayon() {
-			return rayon;
-		}
-		public void setRayon(Rayon rayon) {
-			this.rayon = rayon;
-		}
-		public Stock getStock() {
-			return stock;
-		}
-		public void setStock(Stock stock) {
-			this.stock = stock;
-		}
-		public DetailFacture getDetailFacture() {
-			return detailFacture;
-		}
-		public void setDetailFacture(DetailFacture detailFacture) {
-			this.detailFacture = detailFacture;
-		}
+		private Set<Transporteur> Transporteur;
 		@ManyToOne
 		Rayon rayon;
 		@ManyToOne
