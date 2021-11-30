@@ -28,7 +28,7 @@ public class StockController {
 	
 	// http://localhost:8089/SpringMVC/stock/retrieve-all-Stock
 	@GetMapping("/retrieve-all-Stocks")
-	@ApiOperation("routrouver tous les stocks")
+	@ApiOperation("trouver tous les stocks")
 	@ResponseBody
 	public List<Stock> getAllStock(){
 		List<Stock> listStocks = stockService.retrieveAllStocks();
@@ -37,7 +37,7 @@ public class StockController {
 	
 	// http://localhost:8089/SpringMVC/stock/retrieve-stock/8
 	@GetMapping("/retrieve-stock/{stock-id}")
-	@ApiOperation("routrouver un stock")
+	@ApiOperation("trouver un stock")
 	@ResponseBody
 	public Stock retrieveClient(@PathVariable("stock-id") Long idStock) {
 	return stockService.retrieveStock(idStock);
