@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 @Entity
@@ -28,19 +29,19 @@ public class Reclamation implements Serializable {
 	private Long idReclamation;
 	private String description;
 	private Date date;
-	
+	@JsonIgnore
 	 @ManyToOne
-	    Client client;
+	 User user;
 
 	 public Reclamation() {
 		 
 	 }
-	public Reclamation(Long idReclamation, String description, Date date, Client client) {
+	public Reclamation(Long idReclamation, String description, Date date, User user) {
 		super();
 		this.idReclamation = idReclamation;
 		this.description = description;
 		this.date = date;
-		this.client = client;
+		this.user = user;
 	}
 	
 	 

@@ -1,5 +1,8 @@
 package tn.esprit.spring.entities;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.io.Serializable;
 import java.util.Set;
 
@@ -13,6 +16,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
+@Getter
+@Setter
 @Table( name = "Rayon")
 
 
@@ -53,5 +58,6 @@ public class Rayon  implements Serializable {
 	public Rayon() {
 		super();
 	}
+
 
 }

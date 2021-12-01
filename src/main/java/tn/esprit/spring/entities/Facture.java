@@ -16,6 +16,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 @Entity
@@ -33,8 +34,9 @@ public class Facture implements Serializable  {
     private Boolean active;
     @OneToMany(cascade = CascadeType.ALL, mappedBy="facture")
 	private Set<DetailFacture> detailFacture;
+	@JsonIgnore
     @ManyToOne
-    Client client;
+    User user;
 	public Long getIdFacture() {
 		return idFacture;
 	}

@@ -17,25 +17,21 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import lombok.AllArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 @Entity
 @Data
-@Table( name = "Client")
-public class Client implements Serializable {
+@Table( name = "User")
+public class User implements Serializable {
 /**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 @Id
 @GeneratedValue (strategy = GenerationType.IDENTITY)
-@Column(name="idClient")
-private Long idClient; // Clé primaire
+@Column(name="idUser")
+private Long idUser; // Clé primaire
 private String nom;
 private String prenom;
 private String email;
@@ -46,12 +42,16 @@ private Date dateNaissance;
 private Profession profession;
 @Enumerated(EnumType.STRING)
 public CategorieClient categorieClient;
-@OneToMany(cascade = CascadeType.ALL, mappedBy="client")
+@Enumerated(EnumType.STRING)
+public Role role;
+@JsonIgnore
+@OneToMany(cascade = CascadeType.ALL, mappedBy= "user")
 private Set<Facture> facture;
-@OneToMany(cascade = CascadeType.ALL, mappedBy="client")
+@JsonIgnore
+@OneToMany(cascade = CascadeType.ALL, mappedBy= "user")
 private Set<Reclamation> reclamation;
-public Client(String nom, String prenom,Date dateNaissance, String email, String password,
-		CategorieClient categorieClient,Profession profession) {
+public User(String nom, String prenom, Date dateNaissance, String email, String password,
+			CategorieClient categorieClient, Profession profession , Role role) {
 	super();
 	this.nom = nom;
 	this.prenom = prenom;
@@ -60,8 +60,9 @@ public Client(String nom, String prenom,Date dateNaissance, String email, String
 	this.dateNaissance = dateNaissance;
 	this.profession = profession;
 	this.categorieClient = categorieClient;
+	this.role=role;
 }
-public Client() {
+public User() {
 	super();
 }
 
