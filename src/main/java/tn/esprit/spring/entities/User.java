@@ -45,6 +45,9 @@ public CategorieClient categorieClient;
 @Enumerated(EnumType.STRING)
 public Role role;
 @JsonIgnore
+@OneToMany(cascade = CascadeType.ALL, mappedBy="user")
+private Set<Command> command;
+@JsonIgnore
 @OneToMany(cascade = CascadeType.ALL, mappedBy= "user")
 private Set<Facture> facture;
 @JsonIgnore
