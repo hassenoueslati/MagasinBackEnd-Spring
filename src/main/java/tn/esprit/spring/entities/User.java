@@ -34,6 +34,7 @@ public class User implements Serializable {
 private Long idUser; // Clé primaire
 private String nom;
 private String prenom;
+private String image;
 private String email;
 private String password;
 @Temporal(TemporalType.DATE)
@@ -44,9 +45,6 @@ private Profession profession;
 public CategorieClient categorieClient;
 @Enumerated(EnumType.STRING)
 public Role role;
-@JsonIgnore
-@OneToMany(cascade = CascadeType.ALL, mappedBy="user")
-private Set<Command> command;
 @JsonIgnore
 @OneToMany(cascade = CascadeType.ALL, mappedBy= "user")
 private Set<Facture> facture;

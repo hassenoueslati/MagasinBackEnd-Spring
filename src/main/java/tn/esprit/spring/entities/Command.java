@@ -5,7 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
+
 
 @Entity
 @Getter
@@ -13,7 +13,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Table( name = "Command")
+@Table(name = "Command")
 public class Command implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,10 +21,11 @@ public class Command implements Serializable {
     private Long idCommand;
     @Temporal(TemporalType.DATE)
     private Date dateCommand;
-    @ManyToOne
-    User user ;
-    @ManyToMany(cascade = CascadeType.ALL)
-    private Set<Produit> Produit;
-    @ManyToOne
-    Transporteur transporteur ;
+    @Temporal(TemporalType.DATE)
+    private Date dateLivraison;
+    private String AdresseLivraison;
+    private float FraisLivraison;
+    @OneToOne
+    private Facture Facture;
+    
 }

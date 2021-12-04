@@ -41,8 +41,6 @@ public class Produit implements Serializable {
 		private DetailProduit detailProduit;
 		@ManyToMany(cascade = CascadeType.ALL)
 		private Set<Fournisseur> Fournisseur;
-		@ManyToMany(cascade = CascadeType.ALL)
-		private Set<Transporteur> Transporteur;
 		@ManyToOne
 		Rayon rayon;
 		@ManyToOne
