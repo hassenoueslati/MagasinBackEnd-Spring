@@ -1,6 +1,9 @@
 package tn.esprit.spring.entities;
 
+
+
 import java.io.Serializable;
+
 import java.util.Date;
 import java.util.Set;
 
@@ -17,10 +20,20 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 @Table( name = "Facture")
 public class Facture implements Serializable  {
 	@Id
@@ -37,6 +50,7 @@ public class Facture implements Serializable  {
 	@JsonIgnore
     @ManyToOne
     User user;
+	
 	public Long getIdFacture() {
 		return idFacture;
 	}
@@ -75,8 +89,6 @@ public class Facture implements Serializable  {
 		this.dateFacture = dateFacture;
 		this.active = active;
 	}
-	public Facture() {
-		super();
-	}
+	
     
 }

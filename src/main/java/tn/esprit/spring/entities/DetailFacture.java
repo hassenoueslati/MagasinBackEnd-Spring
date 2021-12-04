@@ -13,9 +13,24 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-@Entity
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+import lombok.experimental.FieldDefaults;
+
 @Table( name = "DetailFacture")
+@Getter
+@Setter
+@RequiredArgsConstructor
+@AllArgsConstructor
+@ToString
+@EqualsAndHashCode
+@Entity
+
 public class DetailFacture implements Serializable {
 	
 	@Id
@@ -30,48 +45,7 @@ public class DetailFacture implements Serializable {
 	private Set<Produit> Produit;
 	@ManyToOne
 	Facture facture;
-	public Long getIdDetailFacture() {
-		return idDetailFacture;
-	}
-	public void setIdDetailFacture(Long idDetailFacture) {
-		this.idDetailFacture = idDetailFacture;
-	}
-	public Integer getQte() {
-		return qte;
-	}
-	public void setQte(Integer qte) {
-		this.qte = qte;
-	}
-	public Float getPrixTotal() {
-		return prixTotal;
-	}
-	public void setPrixTotal(Float prixTotal) {
-		this.prixTotal = prixTotal;
-	}
-	public Integer getPourcentageRemise() {
-		return pourcentageRemise;
-	}
-	public void setPourcentageRemise(Integer pourcentageRemise) {
-		this.pourcentageRemise = pourcentageRemise;
-	}
-	public Float getMontantRemise() {
-		return montantRemise;
-	}
-	public void setMontantRemise(Float montantRemise) {
-		this.montantRemise = montantRemise;
-	}
-	public DetailFacture(Long idDetailFacture, Integer qte, Float prixTotal, Integer pourcentageRemise,
-						 Float montantRemise) {
-		super();
-		this.idDetailFacture = idDetailFacture;
-		this.qte = qte;
-		this.prixTotal = prixTotal;
-		this.pourcentageRemise = pourcentageRemise;
-		this.montantRemise = montantRemise;
-	}
-	public DetailFacture() {
-		super();
-	}
+	
 	
 	
 	
