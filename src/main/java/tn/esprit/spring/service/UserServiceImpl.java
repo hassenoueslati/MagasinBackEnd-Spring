@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
+import tn.esprit.spring.entities.CategorieClient;
 import tn.esprit.spring.entities.User;
 import tn.esprit.spring.repository.UserRepository;
 
@@ -51,6 +52,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User getUserByEmail(String email) {
 		return userRepository.getUserByEmail(email);
+	}
+
+	@Override
+	public List<User> getUserByCategorieClient(CategorieClient categorieClient){
+		return userRepository.getUserByCategorieClient(categorieClient);
 	}
 
 

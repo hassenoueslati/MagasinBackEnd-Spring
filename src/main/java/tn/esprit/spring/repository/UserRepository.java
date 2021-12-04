@@ -5,7 +5,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import tn.esprit.spring.entities.CategorieClient;
 import tn.esprit.spring.entities.User;
+
+import java.util.List;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
@@ -14,6 +17,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query("SELECT c FROM User c WHERE c.email = :email")
     User getUserByEmail(String email);
+
+    @Query("SELECT c FROM User c WHERE c.categorieClient =:categorieClient")
+    List<User> getUserByCategorieClient(CategorieClient categorieClient);
 
 	
 }
