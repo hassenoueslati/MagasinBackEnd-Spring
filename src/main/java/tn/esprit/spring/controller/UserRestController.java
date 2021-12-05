@@ -13,7 +13,7 @@ import tn.esprit.spring.service.UserService;
 
 @RestController
 @Api(tags = "Client Manager")
-@CrossOrigin(origins = "http://localhost:63374")
+@CrossOrigin(origins = "*")
 @RequestMapping("/User")
 public class UserRestController {
 	
