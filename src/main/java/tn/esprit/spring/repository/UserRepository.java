@@ -12,6 +12,8 @@ import java.util.List;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
+    User findByEmail(String email);
+
     @Query("SELECT c FROM User c WHERE c.email=:email AND c.password=:password")
     User getUserByEmailAndPassword(String email,String password);
 

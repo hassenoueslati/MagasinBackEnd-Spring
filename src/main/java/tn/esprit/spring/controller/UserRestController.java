@@ -13,16 +13,17 @@ import tn.esprit.spring.service.UserService;
 
 @RestController
 @Api(tags = "Client Manager")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:63374")
 @RequestMapping("/User")
 public class UserRestController {
 	
 	@Autowired
     UserService userService;
 
+
 	// http://localhost:8089/SpringMVC/User/getUser
 	@GetMapping("/getUser")
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "http://localhost:63374")
 	@ResponseBody
 	public List<User> getClients() {
 	List<User> listUsers = userService.retrieveAllClients();
@@ -78,5 +79,11 @@ public class UserRestController {
 
 
 		return cl;
+	}
+
+
+	@RequestMapping(value = "/log/{email}", method = RequestMethod.GET)
+	public User getUserByEmailPassword(@PathVariable("email")String email){
+		return userService.getUserByEmail(email);
 	}
 }
