@@ -3,6 +3,7 @@ package tn.esprit.spring.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,7 @@ import tn.esprit.spring.service.ProduitServiceImpl;
 
 @RestController
 @Api(tags = "Produit management")
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/produit")
 public class ProduitRestController {
 
@@ -54,10 +56,10 @@ public class ProduitRestController {
 	}
 	
 	// http://localhost:8089/SpringMVC/produit/remove-produit/{produit-id}
-	@DeleteMapping("/remove-produit/{produit-id}")
+	@DeleteMapping("/remove-produit/{idproduit}")
 	@ApiOperation(value = "Supprimer un produit")
 	@ResponseBody
-	public void removeProduit(@PathVariable("produit-id") Long idProduit) {
+	public void removeProduit(@PathVariable("idproduit") Long idProduit) {
 		produitService.deleteProduit(idProduit);
 	}
 	
@@ -76,6 +78,23 @@ public class ProduitRestController {
     {
         produitService.assignFournisseurToProduit(fournisseurId,productId);
     }
+	
+	
+	@ApiOperation(value = "assgin Detail Produit To Produit")
+	@GetMapping("/assignDetailProduitToProduit/{idProduit}/{idDetailProduit}")
+	@ResponseBody
+	public void assignDetailProduitToProduit(@PathVariable(value = "idProduit") long idProduit,@PathVariable(value = "idDetailProduit") long idDetailProduit) {
+		produitService.assignDetailProduitToProduit(idProduit, idDetailProduit);
+	}
+	
+	@ApiOperation(value = "assign Detail Facture To Produit")
+	@GetMapping("/assignDetailFactureToProduit/{idProduit}/{idDetailFacture}")
+	@ResponseBody
+	public void assignDetailFactureToStock(@PathVariable(value = "idProduit") long idProduit,@PathVariable(value = "idDetailFacture") long idDetailFacture) {
+		produitService.assignDetailFactureToProduit(idProduit, idDetailFacture);
+	}
+	
+	
 	
 	
 	

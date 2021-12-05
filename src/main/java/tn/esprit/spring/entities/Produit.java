@@ -36,6 +36,7 @@ public class Produit implements Serializable {
 		private String code;
 		private String libelle;
 		private Float prixUnitaire;
+		private String picture ;
 		//relation one to one 
 		@OneToOne
 		private DetailProduit detailProduit;
