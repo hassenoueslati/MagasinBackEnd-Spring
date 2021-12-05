@@ -9,8 +9,11 @@ import org.springframework.transaction.annotation.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import tn.esprit.spring.entities.Fournisseur;
 import tn.esprit.spring.entities.Produit;
+import tn.esprit.spring.repository.DetailFactureRepository;
+import tn.esprit.spring.repository.DetailProduitRepository;
 import tn.esprit.spring.repository.FournisseurRepository;
 import tn.esprit.spring.repository.ProduitRepository;
+import tn.esprit.spring.repository.RayonRepository;
 
 @Slf4j
 @Service
@@ -20,6 +23,13 @@ public class ProduitServiceImpl implements ProduitService {
 	ProduitRepository produitRepository ;
 	@Autowired
 	FournisseurRepository fournisseurRepository ;
+	@Autowired
+	RayonRepository rayonRepository ;
+	@Autowired
+	DetailProduitRepository detailProduitRepository ;
+	@Autowired
+	DetailFactureRepository detailFactureRepository ;
+	
 	
 	@Override
 	public List<Produit> retrieveAllProduits() {
@@ -53,5 +63,19 @@ public class ProduitServiceImpl implements ProduitService {
         Fournisseur fournisseur=fournisseurRepository.findById(fournisseurId).orElse(null);
         produit.getFournisseur().add(fournisseur);
     }
+	
+	@Override
+	public void assignDetailProduitToProduit(Long idProduit, Long idDetailProduit) {
+		Produit prod=produitRepository.findById(idProduit).get();
+		prod.setDetailProduit(detailProduitRepository.findById(idDetailProduit).get());
+		produitRepository.save(prod);
+	}
+	@Override
+	public void assignDetailFactureToProduit(Long idProduit, Long idDetailFacture) {
+		Produit prod=produitRepository.findById(idProduit).get();
+		prod.setDetailFacture(detailFactureRepository.findById(idDetailFacture).get());
+		produitRepository.save(prod);
+	}
+	
 
 }
