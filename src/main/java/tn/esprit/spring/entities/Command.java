@@ -25,7 +25,6 @@ public class Command implements Serializable {
     private Date dateLivraison;
     private String AdresseLivraison;
     private float FraisLivraison;
-    @OneToOne
-    private Facture Facture;
+   
     
 }
