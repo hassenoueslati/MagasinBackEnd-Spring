@@ -1,6 +1,7 @@
 package tn.esprit.spring.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 import java.util.Date;
@@ -24,6 +26,8 @@ import  tn.esprit.spring.service.*;
 
 
 @RestController
+@Api(tags = "Facture management")
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/facture")
 
 public class FactureRestController {
@@ -69,10 +73,11 @@ public class FactureRestController {
 		 }
 		// http://localhost:8081/SpringMVC/facture/modify-facture
 		 @PutMapping("/modify-facture")
-		 @ResponseBody
+		
 		 public Facture updateDetailFacture(@RequestBody Facture facture) {
 		 return FactureService.updateFacture(facture);
 		  }	
+		 
 		 
 		
 			@GetMapping("/retrieve-all-factures-by-user/{idUser}")
