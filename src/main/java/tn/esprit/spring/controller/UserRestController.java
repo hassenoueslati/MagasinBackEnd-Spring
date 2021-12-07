@@ -47,7 +47,6 @@ public class UserRestController {
 	
 	// http://localhost:8089/SpringMVC/client/add-client
 	@PostMapping("/addUser")
-	@ResponseBody
 	public User addClient(@RequestBody User c)
 	{
 	User user = userService.addClient(c);
