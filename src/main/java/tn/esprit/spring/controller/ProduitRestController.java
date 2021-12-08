@@ -94,6 +94,23 @@ public class ProduitRestController {
 		produitService.assignDetailFactureToProduit(idProduit, idDetailFacture);
 	}
 	
+	// http://localhost:8089/SpringMVC/produit/retrieveProduitParPrixdesc
+		@GetMapping("/retrieveProduitParPrixdesc")
+		@ApiOperation(value = "Récupérer la liste des Produits par prix descendant")
+		@ResponseBody
+		public List<Produit> getProduitsparPrixDesc() {
+			List<Produit> listProduits = produitService.retrieveProduitsParPrixdesc();
+			return listProduits ;
+		}
+		
+		// http://localhost:8089/SpringMVC/produit/retrieveProduitParPrixAsc
+				@GetMapping("/retrieveProduitParPrixAsc")
+				@ApiOperation(value = "Récupérer la liste des Produits par prix ascendant")
+				@ResponseBody
+				public List<Produit> getProduitsparPrixAsc() {
+					List<Produit> listProduits = produitService.retrieveProduitsParPrixAsc();
+					return listProduits ;
+				}
 	
 	
 	

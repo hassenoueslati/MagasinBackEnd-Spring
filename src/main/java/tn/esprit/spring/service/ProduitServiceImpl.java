@@ -77,5 +77,14 @@ public class ProduitServiceImpl implements ProduitService {
 		produitRepository.save(prod);
 	}
 	
-
+	@Override
+	public List<Produit> retrieveProduitsParPrixdesc(){
+		return (List<Produit>) produitRepository.getProduitsParPrixDesc();
+	}
+	
+	@Override
+	public List<Produit> retrieveProduitsParPrixAsc(){
+		return (List<Produit>) produitRepository.getProduitsParPrixAsc();
+	}
+	
 }
