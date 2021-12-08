@@ -13,7 +13,7 @@ import tn.esprit.spring.service.UserService;
 
 @RestController
 @Api(tags = "Client Manager")
-@CrossOrigin(origins = "http://localhost:63374")
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/User")
 public class UserRestController {
 	
@@ -23,7 +23,6 @@ public class UserRestController {
 
 	// http://localhost:8089/SpringMVC/User/getUser
 	@GetMapping("/getUser")
-	@CrossOrigin(origins = "http://localhost:63374")
 	@ResponseBody
 	public List<User> getClients() {
 	List<User> listUsers = userService.retrieveAllClients();
