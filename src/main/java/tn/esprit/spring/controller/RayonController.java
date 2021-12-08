@@ -1,9 +1,11 @@
 package tn.esprit.spring.controller;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.spring.entities.Rayon;
+import tn.esprit.spring.service.ProduitService;
 import tn.esprit.spring.service.RayonServiceImp;
 
 import java.util.List;
@@ -15,7 +17,7 @@ public class RayonController {
 
 	@Autowired
 	RayonServiceImp R;
-	
+
 	public RayonController(RayonServiceImp R) {
 		this.R=R;
 	}
@@ -50,4 +52,12 @@ public class RayonController {
 	public List<Rayon> FindAllRayon() {
 		return R.getAllRayon();
 	}
+
+	@ApiOperation(value = "assignProduitToRayon")
+	@GetMapping("/assignProduitToStock/{idProduit}/{idRayon}")
+	@ResponseBody
+	public void assignProduitToRayon(@PathVariable(value = "idProduit") long idProduit,@PathVariable(value = "idRayon") long idRayon) {
+		 R.assignProduitToRayon(idProduit, idRayon);
+	}
 }
+

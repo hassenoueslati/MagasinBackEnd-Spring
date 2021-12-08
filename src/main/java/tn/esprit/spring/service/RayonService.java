@@ -13,5 +13,6 @@ public interface RayonService {
     public void DeleteRayon(long id);
     public void DeleteAllRayon();
     public void UpdateRayon(Rayon rayon, long id);
-
+    void assignProduitToRayon(Long idProduit, Long idRayon);
+    String retreiveRayonStatus();
 }
