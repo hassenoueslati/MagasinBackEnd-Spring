@@ -28,7 +28,7 @@ private String image;
 private String email;
 private String password;
 private Boolean enabled;
-@Temporal(TemporalType.DATE)
+@Temporal(value = TemporalType.TIMESTAMP)
 private Date dateNaissance;
 @Enumerated(EnumType.STRING)
 private Profession profession;
