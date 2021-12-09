@@ -15,18 +15,22 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+
 @Entity
-@Table( name = "DetailFacture")
 @Getter
 @Setter
-
+@RequiredArgsConstructor
 @AllArgsConstructor
-@NoArgsConstructor
 @ToString
+@EqualsAndHashCode
+@Table( name = "DetailFacture")
+
 public class DetailFacture implements Serializable {
 	
 	@Id
