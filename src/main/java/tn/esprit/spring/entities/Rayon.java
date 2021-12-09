@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -31,6 +32,7 @@ public class Rayon  implements Serializable {
 	private String libelle;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="rayon")
 	private Set<Produit> Produit;
+	@ManyToOne Departement departement;
 	public Long getIdRayon() {
 		return idRayon;
 	}
