@@ -14,6 +14,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -28,6 +31,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 @Table( name = "Produit")
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class)
 public class Produit implements Serializable {
 		@Id
 		@GeneratedValue (strategy = GenerationType.IDENTITY)

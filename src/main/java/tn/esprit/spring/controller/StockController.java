@@ -3,6 +3,7 @@ package tn.esprit.spring.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,20 +17,22 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.annotations.ApiOperation;
 import tn.esprit.spring.entities.Reclamation;
 import tn.esprit.spring.entities.Stock;
+import tn.esprit.spring.repository.StockRepository;
 import tn.esprit.spring.service.ReclamationServiceImp;
 import tn.esprit.spring.service.StockService;
 import tn.esprit.spring.service.StockServiceImp;
-
+@CrossOrigin(origins="*")
 @RestController
 @RequestMapping("/stock")
 public class StockController {
 	@Autowired
-	StockServiceImp stockService ;
+	StockService stockService ;
+	@Autowired
+	StockRepository stockRepository ;
 	
-	// http://localhost:8089/SpringMVC/stock/retrieve-all-Stock
-	@GetMapping("/retrieve-all-Stocks")
+	// http://localhost:8089/SpringMVC/stock/retrieveAllStocks
+	@GetMapping("/retrieveAllStocks")
 	@ApiOperation("trouver tous les stocks")
-	@ResponseBody
 	public List<Stock> getAllStock(){
 		List<Stock> listStocks = stockService.retrieveAllStocks();
 		return listStocks;
@@ -62,16 +65,26 @@ public class StockController {
 	}
 
 	// http://localhost:8089/SpringMVC/stock/modify-stock
-	@PutMapping("/modify-stock")
+	@PutMapping("/modify-stock/{id}")
 	@ApiOperation("modifier les stocks")
-	@ResponseBody
-	public Stock modifyStock(@RequestBody Stock stock) {
-	return stockService.updateStock(stock);
+
+	public Stock modifyStock(@RequestBody Stock stock,@PathVariable long id) {
+	Stock st=stockService.retrieveStock(id);
+	if(stock.getLibelleStock()!=null) st.setLibelleStock(stock.getLibelleStock());
+	if(stock.getQte()!=0) st.setQte(stock.getQte());
+	if(stock.getQteMin()!=0)st.setQteMin(stock.getQteMin());
+	return stockService.updateStock(st);
 	}
+	@GetMapping(value = "/search/{keyword}")
+    public List<Stock> dynamicSearch(@PathVariable String keyword){
+		return stockRepository.search(keyword);
+   	 
+    }
 	
 	@GetMapping("/assignProduitToStock/{idProduit}/{idStock}")
 	public String assinProduitToStock(@PathVariable(value = "idProduit") long idProduit,@PathVariable(value = "idStock") long idStock) {
 		stockService.assignProduitToStock(idProduit, idStock);
 		return "product successfuly assigned to Stock";
 	}
+
 }
