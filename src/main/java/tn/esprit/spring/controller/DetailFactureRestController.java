@@ -47,6 +47,7 @@ public class DetailFactureRestController {
 		 public void deleteDetailFacture(@PathVariable("id") Long id) {
 			 DetailFactureService.deleteDetailFacture(id);
 		 }
+		 
 		// http://localhost:8081/SpringMVC/DetailFacture/modify-DetailFacture
 				 @PutMapping("/modify-DetailFacture")
 				 @ResponseBody

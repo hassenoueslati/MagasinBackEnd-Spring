@@ -20,5 +20,5 @@ public interface ProduitService {
 	
 	void assignDetailProduitToProduit(Long idProduit, Long idDetailProduit);
 	
-	void assignDetailFactureToProduit(Long idProduit, Long idDetailFacture);
+
 }

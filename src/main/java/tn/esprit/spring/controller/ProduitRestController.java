@@ -87,12 +87,7 @@ public class ProduitRestController {
 		produitService.assignDetailProduitToProduit(idProduit, idDetailProduit);
 	}
 	
-	@ApiOperation(value = "assign Detail Facture To Produit")
-	@GetMapping("/assignDetailFactureToProduit/{idProduit}/{idDetailFacture}")
-	@ResponseBody
-	public void assignDetailFactureToStock(@PathVariable(value = "idProduit") long idProduit,@PathVariable(value = "idDetailFacture") long idDetailFacture) {
-		produitService.assignDetailFactureToProduit(idProduit, idDetailFacture);
-	}
+	
 	
 	
 	

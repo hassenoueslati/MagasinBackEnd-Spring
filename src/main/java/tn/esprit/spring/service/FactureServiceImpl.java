@@ -33,6 +33,7 @@ public class FactureServiceImpl implements FactureService{
 
 	@Override
 	public Facture addFacture(Facture f) {
+		
 		return FactureRepository.save(f);
 	}
 
@@ -65,7 +66,7 @@ public class FactureServiceImpl implements FactureService{
 			float montantDetail=0f;
 			float montantRemiseDetail=0f;
 			
-			//montantDetail=detailFact.getProduit().getPrixUnitaire()*detailFact.getQte();
+			montantDetail=detailFact.getProduit().getPrixUnitaire()*detailFact.getQte();
 			montantRemiseDetail = montantDetail*detailFact.getPourcentageRemise()/100;
 			detailFact.setPrixTotal(montantDetail);
 			detailFact.setMontantRemise(montantRemiseDetail);
