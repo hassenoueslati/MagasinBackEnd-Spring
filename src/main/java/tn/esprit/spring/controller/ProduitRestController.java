@@ -18,7 +18,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import tn.esprit.spring.entities.Produit;
 import tn.esprit.spring.service.ProduitServiceImpl;
-
+@CrossOrigin(origins="*")
 @RestController
 @Api(tags = "Produit management")
 @CrossOrigin(origins = "http://localhost:4200")

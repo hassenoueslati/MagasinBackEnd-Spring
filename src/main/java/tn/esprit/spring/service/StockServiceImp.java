@@ -1,7 +1,9 @@
 package tn.esprit.spring.service;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,18 +25,20 @@ public class StockServiceImp implements StockService {
 	@Override
 	public List<Stock> retrieveAllStocks() {
 		// TODO Auto-generated method stub
-		return (List<Stock>)stockRepository.findAll();
+		return stockRepository.findAll();
 	}
 
 	@Override
 	public Stock addStock(Stock s) {
 		// TODO Auto-generated method stub
+		
 		return stockRepository.save(s);
 	}
 
 	@Override
 	public Stock updateStock(Stock s) {
 		// TODO Auto-generated method stub
+		
 		return stockRepository.save(s);
 	}
 
@@ -43,11 +47,9 @@ public class StockServiceImp implements StockService {
 		// TODO Auto-generated method stub
 		return stockRepository.findById(idStock).get();
 	}
-
-	public void deleteStock(Long idStock) {
-		// TODO Auto-generated method stub
-		
-	}
+	
+	
+	
 
 	@Override
 	public void assignProduitToStock(Long idProduit, Long idStock) {
@@ -57,5 +59,13 @@ public class StockServiceImp implements StockService {
 		produitRepository.save(prod);
 		
 	}
+
+	@Override
+	public void deleteStock(long idStock) {
+		// TODO Auto-generated method stub
+		stockRepository.deleteById(idStock);
+	}
+
+	
 	
 }

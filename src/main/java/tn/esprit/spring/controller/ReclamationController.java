@@ -1,8 +1,11 @@
 package tn.esprit.spring.controller;
 
+
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,9 +24,12 @@ import tn.esprit.spring.service.ReclamationServiceImp;
 @RestController
 @Api(tags="Reclamation")
 @RequestMapping("/reclamation")
+@CrossOrigin(origins="*")
 public class ReclamationController {
 	@Autowired
 	ReclamationServiceImp reclamationService ;
+	@Autowired
+	EmailSenderService emailSenderService ;
 	
 	// http://localhost:8089/SpringMVC/reclamation/retrieve-all-Reclamations
 	@GetMapping("/retrieve-all-Reclamations")
@@ -45,10 +51,11 @@ public class ReclamationController {
 	// http://localhost:8089/SpringMVC/reclamation/add-reclamation
 	@PostMapping("/add-reclamation")
 	@ApiOperation("ajouter les reclamations")
-	@ResponseBody
-	public Reclamation addReclamation(@RequestBody Reclamation r)
-	{
+	public Reclamation addReclamation(@RequestBody Reclamation r) {
+		Date date = new Date(System.currentTimeMillis());
+		r.setDate(date);
 		Reclamation reclamation = reclamationService.addReclamation(r);
+		emailSenderService.SendEmail("badisraissi98@gmail.com", "Reclamation", "votre reclamation est bien recu");
 	return reclamation;
 	}
 	
