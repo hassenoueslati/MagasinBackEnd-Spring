@@ -67,7 +67,7 @@ public class RayonServiceImp implements RayonService{
 		prod.setRayon(rayonRepository.findById(idRayon).get());
 		produitRepository.save(prod);
 	}
-	@Scheduled(cron = "0 10 * * 1")
+	@Scheduled(cron = "0 10 * * * 1")
 	public String retreiveRayonStatus() {
 		rayonRepository.getStatusRayon().forEach(rayon -> {
 			log.warn("rayon "+rayon.getLibelle() +"est vide");
