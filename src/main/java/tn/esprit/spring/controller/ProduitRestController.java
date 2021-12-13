@@ -86,13 +86,25 @@ public class ProduitRestController {
 		produitService.assignDetailProduitToProduit(idProduit, idDetailProduit);
 	}
 	
-	@ApiOperation(value = "assign Detail Facture To Produit")
-	@GetMapping("/assignDetailFactureToProduit/{idProduit}/{idDetailFacture}")
-	@ResponseBody
-	public void assignDetailFactureToStock(@PathVariable(value = "idProduit") long idProduit,@PathVariable(value = "idDetailFacture") long idDetailFacture) {
-		produitService.assignDetailFactureToProduit(idProduit, idDetailFacture);
-	}
 	
+	
+	// http://localhost:8089/SpringMVC/produit/retrieveProduitParPrixdesc
+		@GetMapping("/retrieveProduitParPrixdesc")
+		@ApiOperation(value = "Récupérer la liste des Produits par prix descendant")
+		@ResponseBody
+		public List<Produit> getProduitsparPrixDesc() {
+			List<Produit> listProduits = produitService.retrieveProduitsParPrixdesc();
+			return listProduits ;
+		}
+		
+		// http://localhost:8089/SpringMVC/produit/retrieveProduitParPrixAsc
+				@GetMapping("/retrieveProduitParPrixAsc")
+				@ApiOperation(value = "Récupérer la liste des Produits par prix ascendant")
+				@ResponseBody
+				public List<Produit> getProduitsparPrixAsc() {
+					List<Produit> listProduits = produitService.retrieveProduitsParPrixAsc();
+					return listProduits ;
+				}
 	
 	
 	
