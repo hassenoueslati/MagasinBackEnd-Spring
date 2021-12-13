@@ -11,11 +11,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,7 +32,6 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 @Table( name = "Produit")
-@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class)
 public class Produit implements Serializable {
 		@Id
 		@GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -50,8 +50,9 @@ public class Produit implements Serializable {
 		Rayon rayon;
 		@ManyToOne
 		Stock stock;
-		@ManyToOne
-		DetailFacture detailFacture;
+		 @JsonIgnore
+		@OneToMany(mappedBy="produit")
+		private Set<DetailFacture> detailFacture;
 		public Produit(String code, String libelle, Float prixUnitaire) {
 			super();
 			this.code = code;

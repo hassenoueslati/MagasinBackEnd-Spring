@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import tn.esprit.spring.entities.User;
 import tn.esprit.spring.entities.CategorieClient;
+import tn.esprit.spring.entities.DetailFacture;
 import tn.esprit.spring.entities.Facture;
 
 public interface FactureService {
@@ -17,7 +18,7 @@ public interface FactureService {
 	public void deleteFacture(Long id);
 	
 	public Facture updateFacture(Facture f);
-	
+	public Optional<Facture> findById(Long id) ;
 	public Facture retrieveFacture(Long id);
 	public List<Facture> getFacturesByUser(Long idUser);
 	public Facture addFacture(Facture f, Long idUser) ;
