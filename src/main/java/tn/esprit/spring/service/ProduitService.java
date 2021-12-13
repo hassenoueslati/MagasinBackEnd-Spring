@@ -20,5 +20,9 @@ public interface ProduitService {
 	
 	void assignDetailProduitToProduit(Long idProduit, Long idDetailProduit);
 	
+	List<Produit> retrieveProduitsParPrixdesc();
+	
+	List<Produit> retrieveProduitsParPrixAsc();
+	
 
 }

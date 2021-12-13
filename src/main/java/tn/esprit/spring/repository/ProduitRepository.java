@@ -20,6 +20,12 @@ public interface ProduitRepository extends CrudRepository<Produit, Long> {
                       @Param("detailproduit_id_detail_produit") Long detailproduit_id_detail_produit, @Param("rayon_id_rayon") Long rayon_id_rayon ,
                       @Param("stock_id_stock") Long stock_id_stock);
 	
+	@Query("SELECT p FROM Produit p ORDER BY p.prixUnitaire DESC")
+    List<Produit> getProduitsParPrixDesc();
+    
+    @Query("SELECT p FROM Produit p ORDER BY p.prixUnitaire ASC")
+    List<Produit> getProduitsParPrixAsc();
+	
 	
 	
 	

@@ -44,10 +44,13 @@ public class Produit implements Serializable {
 		//relation one to one 
 		@OneToOne
 		private DetailProduit detailProduit;
+		@JsonIgnore
 		@ManyToMany(cascade = CascadeType.ALL)
 		private Set<Fournisseur> Fournisseur;
+		@JsonIgnore
 		@ManyToOne
 		Rayon rayon;
+		@JsonIgnore
 		@ManyToOne
 		Stock stock;
 		 @JsonIgnore
