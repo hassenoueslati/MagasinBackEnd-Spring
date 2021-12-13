@@ -18,7 +18,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import tn.esprit.spring.entities.Produit;
 import tn.esprit.spring.service.ProduitServiceImpl;
-
+@CrossOrigin(origins="*")
 @RestController
 @Api(tags = "Produit management")
 @CrossOrigin(origins = "http://localhost:4200")
@@ -87,12 +87,7 @@ public class ProduitRestController {
 		produitService.assignDetailProduitToProduit(idProduit, idDetailProduit);
 	}
 	
-	@ApiOperation(value = "assign Detail Facture To Produit")
-	@GetMapping("/assignDetailFactureToProduit/{idProduit}/{idDetailFacture}")
-	@ResponseBody
-	public void assignDetailFactureToStock(@PathVariable(value = "idProduit") long idProduit,@PathVariable(value = "idDetailFacture") long idDetailFacture) {
-		produitService.assignDetailFactureToProduit(idProduit, idDetailFacture);
-	}
+	
 	
 	// http://localhost:8089/SpringMVC/produit/retrieveProduitParPrixdesc
 		@GetMapping("/retrieveProduitParPrixdesc")

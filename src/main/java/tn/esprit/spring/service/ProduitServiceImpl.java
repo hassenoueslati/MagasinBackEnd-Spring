@@ -70,12 +70,7 @@ public class ProduitServiceImpl implements ProduitService {
 		prod.setDetailProduit(detailProduitRepository.findById(idDetailProduit).get());
 		produitRepository.save(prod);
 	}
-	@Override
-	public void assignDetailFactureToProduit(Long idProduit, Long idDetailFacture) {
-		Produit prod=produitRepository.findById(idProduit).get();
-		prod.setDetailFacture(detailFactureRepository.findById(idDetailFacture).get());
-		produitRepository.save(prod);
-	}
+	
 	
 	@Override
 	public List<Produit> retrieveProduitsParPrixdesc(){

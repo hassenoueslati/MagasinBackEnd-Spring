@@ -1,6 +1,8 @@
 package tn.esprit.spring.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,12 +18,14 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
+
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 import tn.esprit.spring.entities.CategorieClient;
 import tn.esprit.spring.entities.Facture;
+import tn.esprit.spring.repository.FactureRepository;
 import  tn.esprit.spring.service.*;
 
 
@@ -33,6 +37,8 @@ import  tn.esprit.spring.service.*;
 public class FactureRestController {
 	@Autowired
 	FactureService FactureService;
+	@Autowired
+	 FactureRepository Facturerep;
 	// http://localhost:8081/SpringMVC/facture/retrieve-all-factures
 		@GetMapping("/retrieve-all-factures")
 		@ResponseBody
@@ -101,6 +107,23 @@ public class FactureRestController {
 			public float getChiffreAffaireParCategorieClient(@PathVariable("categ") CategorieClient categClt, @RequestParam Map<String, Date> dates) {
 			return FactureService.getChiffreAffaireParCategorieClient(categClt, dates.get("dateDeb"), dates.get("dateFin"));
 			}
+		@PutMapping("updateFac/{idFacture}")
+		public ResponseEntity<?> updateFac(@PathVariable Long idFacture, @RequestBody Facture fac ){
+			
+			if(this. FactureService.findById(idFacture).isPresent()) {
+				
+				fac.setIdFacture(idFacture);
+				return new ResponseEntity<>(FactureService.addFacture(fac),HttpStatus.OK);
+			}
+			else {
+				
+				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			}
+		}
+		
+
+		
+		
 			
 
 }

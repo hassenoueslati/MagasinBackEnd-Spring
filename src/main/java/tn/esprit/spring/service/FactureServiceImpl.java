@@ -1,7 +1,10 @@
 package tn.esprit.spring.service;
 
 import java.util.Date;
+
 import java.util.List;
+import java.util.Optional;
+
 import javax.transaction.Transactional;
 
 
@@ -9,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
+
 import tn.esprit.spring.entities.CategorieClient;
 import tn.esprit.spring.entities.DetailFacture;
 import tn.esprit.spring.entities.Facture;
@@ -33,8 +37,12 @@ public class FactureServiceImpl implements FactureService{
 
 	@Override
 	public Facture addFacture(Facture f) {
+
+		
+		
 		return FactureRepository.save(f);
 	}
+	
 
 	@Override
 	public void deleteFacture(Long id) {
@@ -49,6 +57,11 @@ public class FactureServiceImpl implements FactureService{
 	@Override
 	public Facture retrieveFacture(Long id) {
 		return FactureRepository.findById(id).get();
+	}
+	
+	@Override
+	public Optional<Facture> findById(Long id) {
+		return FactureRepository.findById(id);
 	}
 	@Override
 	public List<Facture> getFacturesByUser(Long idUser) {
@@ -65,7 +78,7 @@ public class FactureServiceImpl implements FactureService{
 			float montantDetail=0f;
 			float montantRemiseDetail=0f;
 			
-			//montantDetail=detailFact.getProduit().getPrixUnitaire()*detailFact.getQte();
+			montantDetail=detailFact.getProduit().getPrixUnitaire()*detailFact.getQte();
 			montantRemiseDetail = montantDetail*detailFact.getPourcentageRemise()/100;
 			detailFact.setPrixTotal(montantDetail);
 			detailFact.setMontantRemise(montantRemiseDetail);
