@@ -53,13 +53,8 @@ public class RayonServiceImp implements RayonService{
 	}
 
 	@Override
-	public void UpdateRayon(Rayon rayon, long id) {
-		Rayon R1 = rayonRepository.findById(id).get();
-		if(rayon.getCode()!=null) R1.setCode(rayon.getCode());
-		if(rayon.getLibelle()!=null) R1.setLibelle(rayon.getLibelle());
-		if(rayon.getProduit()!=null) R1.setProduit(rayon.getProduit());
-		
-		rayonRepository.save(rayon);
+	public Rayon UpdateRayon(Rayon rayon) {
+		return rayonRepository.save(rayon);
 	}
 	@Override
 	public void assignProduitToRayon(Long idProduit, Long idRayon) {

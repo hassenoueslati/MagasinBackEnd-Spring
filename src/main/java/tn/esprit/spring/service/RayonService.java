@@ -12,7 +12,7 @@ public interface RayonService {
     public List<Rayon> getAllRayon();
     public void DeleteRayon(long id);
     public void DeleteAllRayon();
-    public void UpdateRayon(Rayon rayon, long id);
+    public Rayon UpdateRayon(Rayon rayon);
     void assignProduitToRayon(Long idProduit, Long idRayon);
     String retreiveRayonStatus();
 }

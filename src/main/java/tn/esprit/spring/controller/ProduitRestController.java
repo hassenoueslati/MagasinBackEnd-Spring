@@ -21,7 +21,6 @@ import tn.esprit.spring.service.ProduitServiceImpl;
 @CrossOrigin(origins="*")
 @RestController
 @Api(tags = "Produit management")
-@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/produit")
 public class ProduitRestController {
 
