@@ -37,7 +37,9 @@ import lombok.ToString;
 @AllArgsConstructor
 
 @Table( name = "DetailFacture")
-
+@JsonIdentityInfo(
+		  generator = ObjectIdGenerators.PropertyGenerator.class, 
+		  property = "idDetailFacture")
 public class DetailFacture implements Serializable {
 	
 	@Id
@@ -51,7 +53,7 @@ public class DetailFacture implements Serializable {
 	
 	@ManyToOne()
 	Produit produit;
-	@JsonIgnore
+	
 	@ManyToOne(cascade = CascadeType.ALL, fetch=FetchType.LAZY)
 	Facture facture;
 	
