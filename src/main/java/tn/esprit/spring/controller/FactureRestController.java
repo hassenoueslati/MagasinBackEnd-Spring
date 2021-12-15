@@ -40,6 +40,7 @@ public class FactureRestController {
 	@Autowired
 	 FactureRepository Facturerep;
 	// http://localhost:8081/SpringMVC/facture/retrieve-all-factures
+	@ApiOperation(value = "Afficher facture")
 		@GetMapping("/retrieve-all-factures")
 		@ResponseBody
 		public List<Facture> getFactures() {
@@ -48,6 +49,7 @@ public class FactureRestController {
 
 	}
 		// http://localhost:8081/SpringMVC/facture/retrieve-facture/1
+	@ApiOperation(value = "afficher facture par id")
 		@GetMapping("/retrieve-facture/{id}")
 		@ResponseBody
 		public Facture retrieveFacture(@PathVariable("id") Long id) {
@@ -55,6 +57,7 @@ public class FactureRestController {
 		 }
 
 		// http://localhost:8081/SpringMVC/facture/add-facture
+	@ApiOperation(value = "Ajouter une nouvelle facture")
 		 @PostMapping("/add-facture")
 		 @ResponseBody
 		 public Facture addFacture(@RequestBody Facture f) {
@@ -62,7 +65,7 @@ public class FactureRestController {
 		 return facture;
 	}
 		 // ajout facture by user
-			@ApiOperation(value = "Ajouter une nouvelle facture")
+			@ApiOperation(value = "Ajouter une nouvelle facture par id client")
 			@PostMapping("/addfacture/{idUser}")
 			@ResponseBody
 			public Facture addFactureUser(@RequestBody Facture f, @PathVariable("idUser") Long idUser)
@@ -72,19 +75,21 @@ public class FactureRestController {
 			
 		 
 			// http://localhost:8081/SpringMVC/facture/remove-facture/1
+			@ApiOperation(value = "supprimer une facture")
 		 @DeleteMapping("/remove-facture/{id}")
 		 @ResponseBody
 		 public void deleteFacture(@PathVariable("id") Long id) {
 			 FactureService.deleteFacture(id);
 		 }
 		// http://localhost:8081/SpringMVC/facture/modify-facture
+			@ApiOperation(value = "modifier une facture")
 		 @PutMapping("/modify-facture")
 		
 		 public Facture updateDetailFacture(@RequestBody Facture facture) {
 		 return FactureService.updateFacture(facture);
 		  }	
 		 
-		 
+			@ApiOperation(value = "retrieve-all-factures-by-user")
 		
 			@GetMapping("/retrieve-all-factures-by-user/{idUser}")
 			@ResponseBody
@@ -107,6 +112,7 @@ public class FactureRestController {
 			public float getChiffreAffaireParCategorieClient(@PathVariable("categ") CategorieClient categClt, @RequestParam Map<String, Date> dates) {
 			return FactureService.getChiffreAffaireParCategorieClient(categClt, dates.get("dateDeb"), dates.get("dateFin"));
 			}
+		@ApiOperation(value = "modifier facture par id")
 		@PutMapping("updateFac/{idFacture}")
 		public ResponseEntity<?> updateFac(@PathVariable Long idFacture, @RequestBody Facture fac ){
 			
