@@ -18,8 +18,6 @@ public interface ProduitService {
 	
 	void assignFournisseurToProduit(Long fournisseurId, Long produitId);
 	
-	void assignDetailProduitToProduit(Long idProduit, Long idDetailProduit);
-	
 	List<Produit> retrieveProduitsParPrixdesc();
 	
 	List<Produit> retrieveProduitsParPrixAsc();

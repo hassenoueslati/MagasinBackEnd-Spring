@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import tn.esprit.spring.entities.Fournisseur;
+import tn.esprit.spring.entities.Produit;
 import tn.esprit.spring.service.FournisseurService;
 
 @RestController
@@ -64,5 +65,13 @@ public class FournissseurRestController {
 	@ResponseBody
 	public Fournisseur modifyFournisseur(@RequestBody Fournisseur f) {
 	return fournisseurService.updateFournisseur(f);
+	}
+
+
+	@ApiOperation(value = "Récupérer list produit par fournisseur")
+	@GetMapping("/retrieveProduitByfournisseur/{fournisseur-id}")
+	@ResponseBody
+	public List<Produit> getProduitByFournisseur(@PathVariable("fournisseur-id") long idFournisseur ){
+		return fournisseurService.getProduitByFounisseur(idFournisseur);
 	}
 }

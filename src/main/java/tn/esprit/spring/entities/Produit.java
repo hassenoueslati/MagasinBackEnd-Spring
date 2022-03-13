@@ -1,19 +1,10 @@
 package tn.esprit.spring.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -41,9 +32,14 @@ public class Produit implements Serializable {
 		private String libelle;
 		private Float prixUnitaire;
 		private String picture ;
-		//relation one to one 
-		@OneToOne
-		private DetailProduit detailProduit;
+		@Temporal(TemporalType.DATE)
+		private Date dateCreation;
+		@Temporal(TemporalType.DATE)
+		private Date dateDerniereModification;
+		@Enumerated(EnumType.STRING)
+		public CategorieProduit categorieProduit;
+		private Long nbLike ;
+
 		@JsonIgnore
 		@ManyToMany(cascade = CascadeType.ALL)
 		private Set<Fournisseur> Fournisseur;

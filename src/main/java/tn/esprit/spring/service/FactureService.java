@@ -16,7 +16,7 @@ public interface FactureService {
 
 	public Facture addFacture(Facture f);
 	public void deleteFacture(Long id);
-	public float revenuDuMagasin();
+	
 	public Facture updateFacture(Facture f);
 	public Optional<Facture> findById(Long id) ;
 	public Facture retrieveFacture(Long id);

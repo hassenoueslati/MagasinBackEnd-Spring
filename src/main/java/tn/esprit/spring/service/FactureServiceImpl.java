@@ -9,7 +9,6 @@ import javax.transaction.Transactional;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
@@ -101,18 +100,6 @@ public class FactureServiceImpl implements FactureService{
 	public float getChiffreAffaireParCategorieClient(CategorieClient categorieClient, Date startDate, Date endDate) {
 		return FactureRepository.getChiffreAffaireParCategorieClient(categorieClient, startDate, endDate);
 	}
-	@Override
-	@Scheduled(cron = "* * * 1 1 *")
-	public float revenuDuMagasin() {
-		List<Facture> factures = (List<Facture>) FactureRepository.findAll();
-		float totalRevenue=0f;
-		for (Facture facture : factures) {
-			totalRevenue += facture.getMontantFacture() - facture.getMontantFacture()*facture.getMontantRemise();
-		}
-		System.out.println(totalRevenue);
-		return totalRevenue;
-	}
-	
 
 
 }

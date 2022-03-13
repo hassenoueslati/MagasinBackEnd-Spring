@@ -77,17 +77,8 @@ public class ProduitRestController {
     {
         produitService.assignFournisseurToProduit(fournisseurId,productId);
     }
-	
-	
-	@ApiOperation(value = "assgin Detail Produit To Produit")
-	@GetMapping("/assignDetailProduitToProduit/{idProduit}/{idDetailProduit}")
-	@ResponseBody
-	public void assignDetailProduitToProduit(@PathVariable(value = "idProduit") long idProduit,@PathVariable(value = "idDetailProduit") long idDetailProduit) {
-		produitService.assignDetailProduitToProduit(idProduit, idDetailProduit);
-	}
-	
-	
-	
+
+
 	// http://localhost:8089/SpringMVC/produit/retrieveProduitParPrixdesc
 		@GetMapping("/retrieveProduitParPrixdesc")
 		@ApiOperation(value = "Récupérer la liste des Produits par prix descendant")

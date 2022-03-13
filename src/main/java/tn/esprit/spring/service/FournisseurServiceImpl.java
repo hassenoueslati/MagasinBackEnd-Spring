@@ -6,12 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.entities.Fournisseur;
+import tn.esprit.spring.entities.Produit;
 import tn.esprit.spring.repository.FournisseurRepository;
 @Service
 public class FournisseurServiceImpl implements FournisseurService {
 
 	@Autowired
 	private FournisseurRepository fournisseurRepository;
+
+
 	
 	@Override
 	public List<Fournisseur> retrieveAllFournisseurs() {
@@ -35,6 +38,11 @@ public class FournisseurServiceImpl implements FournisseurService {
 	@Override
 	public Fournisseur retrieveFournisseur(Long idFournisseur) {
 		return fournisseurRepository.findById(idFournisseur).get();
+	}
+
+	@Override
+	public List<Produit> getProduitByFounisseur(long idFounisseur){
+			return fournisseurRepository.getProduitByFournisseur(idFounisseur);
 	}
 	
 }
